@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background-color: #ecf0f1;
+        }
+        .result {
+            background: white;
+            display: inline-block;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="result">
+    <h2>Quiz Result</h2>
+    <p th:text="'Subject: ' + ${subject}"></p>
+    <p th:text="'You scored ' + ${score} + ' out of ' + ${total}"></p>
+
+    <a href="/dashboard">← Back to Dashboard</a>
+</div>
+
+<!-- Prevent back button from going back to quiz -->
+<script>
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+        history.go(1);
+    };
+</script>
+<script>
+    setTimeout(() => {
+        window.location.href = "/dashboard";
+    }, 10000); // 10,000 ms = 10 sec
+</script>
+
+</body>
+</html>

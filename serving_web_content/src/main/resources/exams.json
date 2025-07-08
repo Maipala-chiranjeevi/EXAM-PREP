@@ -1,0 +1,50 @@
+[
+  {
+    "exam": "gate",
+    "registrationStart": "August 30, 2025",
+    "lastDate": "October 7, 2025",
+    "examDates": "February 1 – 10, 2026",
+    "syllabus": [
+      "Physics – Mechanics, Thermodynamics, Electromagnetism",
+      "Math – Calculus, Algebra, Probability"
+    ],
+    "pdfLinks": [
+      "/pdfs/gate_2023.pdf",
+      "/pdfs/gate_2022.pdf"
+    ],
+    "videoConcepts": [
+      "Engineering Maths",
+      "Digital Logic"
+    ],
+    "videoLinks": [
+      "https://youtu.be/video1",
+      "https://youtu.be/video2"
+    ],
+    "quizLink": "/quiz/gate"
+  },
+  {
+    "exam": "jee",
+    "registrationStart": "Nov 1, 2025",
+    "lastDate": "Dec 15, 2025",
+    "examDates": "Jan 15 – 20, 2026",
+    "syllabus": [
+      "Math – Sets, Functions, Calculus",
+      "Physics – Kinematics, Optics",
+      "Chemistry – Equilibrium, Organic Chemistry"
+    ],
+    "pdfLinks": [
+      "/pdfs/jee_2023.pdf"
+    ],
+    "videoConcepts": [
+      "Mechanics",
+      "Mole Concept",
+      "Integrals"
+    ],
+    "videoLinks": [
+      "https://youtu.be/jee1",
+      "https://youtu.be/jee2",
+      "https://youtu.be/jee3"
+    ],
+    "quizLink": "/quiz/jee"
+  }
+]

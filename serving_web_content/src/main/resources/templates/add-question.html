@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add Question</title>
+</head>
+<body>
+<h2>Add New Question</h2>
+<form th:action="@{/add-question}" method="post" th:object="${question}">
+  <label>Subject: </label><input type="text" th:field="*{subject}"/><br/>
+  <label>Question: </label><input type="text" th:field="*{questionText}"/><br/>
+  <label>A: </label><input type="text" th:field="*{optionA}"/><br/>
+  <label>B: </label><input type="text" th:field="*{optionB}"/><br/>
+  <label>C: </label><input type="text" th:field="*{optionC}"/><br/>
+  <label>D: </label><input type="text" th:field="*{optionD}"/><br/>
+  <label>Correct Answer: </label><input type="text" th:field="*{correctAnswer}"/><br/>
+  <button type="submit">Add</button>
+</form>
+</body>
+</html>

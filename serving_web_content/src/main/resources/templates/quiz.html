@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Quiz</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        background-color: #f4f4f4;
+    }
+    .question {
+        background: white;
+        padding: 15px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+    .options label {
+        display: block;
+        margin-left: 20px;
+    }
+    .submit-btn {
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+
+  </style>
+</head>
+<body onload="startTimer()">
+<h2 th:text="'Quiz on ' + ${subject}"></h2>
+
+<div style="font-size: 18px; font-weight: bold; margin-bottom: 15px;">
+  Time Left: <span id="timer">05:00</span>
+</div>
+
+<form id="quizForm" th:action="@{'/quiz/submit/' + ${subject}}" method="post">
+
+  <div th:each="question, iterStat : ${questions}" class="question">
+    <p><b th:text="${iterStat.count} + '. ' + ${question.questionText}"></b></p>
+    <div class="options">
+      <label>
+        <input type="radio"
+               th:name="'answers[' + ${question.id} + ']'"
+               th:value="${question.optionA}" />
+        <span th:text="${question.optionA}"></span>
+      </label>
+      <label>
+        <input type="radio"
+               th:name="'answers[' + ${question.id} + ']'"
+               th:value="${question.optionB}" />
+        <span th:text="${question.optionB}"></span>
+      </label>
+      <label>
+        <input type="radio"
+               th:name="'answers[' + ${question.id} + ']'"
+               th:value="${question.optionC}" />
+        <span th:text="${question.optionC}"></span>
+      </label>
+      <label>
+        <input type="radio"
+               th:name="'answers[' + ${question.id} + ']'"
+               th:value="${question.optionD}" />
+        <span th:text="${question.optionD}"></span>
+      </label>
+    </div>
+  </div>
+  <button type="submit" class="submit-btn">Submit</button>
+</form>
+
+<script>
+  let timeInSeconds = 10; // Set your quiz duration
+  let timerStarted = false;
+
+  function startTimer() {
+    const timerDisplay = document.getElementById('timer');
+    const interval = setInterval(() => {
+      const minutes = Math.floor(timeInSeconds / 60);
+      const seconds = timeInSeconds % 60;
+      timerDisplay.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      timeInSeconds--;
+
+      if (timeInSeconds < 0) {
+        clearInterval(interval);
+        alert("Time's up! Submitting your quiz...");
+        const form = document.getElementById('quizForm');
+        if (form) form.submit();
+      }
+    }, 1000);
+  }
+
+  function setupFirstAnswerListener() {
+    const firstQuestionInputs = document.querySelectorAll('.question:nth-of-type(1) input[type="radio"]');
+    firstQuestionInputs.forEach(input => {
+      input.addEventListener('change', () => {
+        if (!timerStarted) {
+          timerStarted = true;
+          startTimer();
+        }
+      });
+    });
+  }
+
+  window.onload = setupFirstAnswerListener;
+</script>
+
+
+
+</body>
+</html>

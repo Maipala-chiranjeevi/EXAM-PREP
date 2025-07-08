@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Government Exams Dashboard</title>
+    <style>
+        * {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .navbar {
+            background-color: #2c3e50;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: white;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #1abc9c;
+            color: white;
+        }
+
+        .logout-button {
+            background-color: #e74c3c;
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #34495e;
+            color: white;
+        }
+
+        .exam-section {
+            padding: 2rem;
+            background-color: #ecf0f1;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+
+        .exam-card {
+            background-color: white;
+            width: 180px;
+            height: 120px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .exam-card:hover {
+            transform: scale(1.05);
+            background-color: #dfe6e9;
+        }
+
+        .footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 20rem;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔹 Navigation Bar -->
+<div class="navbar">
+    <a href="/dashboard">Home</a>
+    <a href="#courses">Courses</a>
+    <a href="#contact">Contact</a>
+    <a href="/logout" class="logout-button">Logout</a>
+</div>
+
+<!-- 🔹 Header -->
+<div class="header">
+    <h1>Welcome to the Government Exam Hub</h1>
+    <p>Explore, Learn, and Succeed</p>
+</div>
+
+<!-- 🔹 Exam/Courses Section -->
+<div id="courses" class="exam-section">
+    <h2 style="text-align: center;">Available Exams</h2>
+    <div class="container">
+        <a th:href="@{/exam/{examName}(examName='gate')}" class="exam-card">GATE</a>
+        <a th:href="@{/exam/{examName}(examName='jee')}" class="exam-card">JEE</a>
+<!--        <a href="/ssc" class="exam-card">SSC-CGL</a>-->
+<!--        <a href="/toefl" class="exam-card">TOEFL</a>-->
+    </div>
+</div>
+
+
+
+<div>
+<!-- 🔹 Footer -->
+<div class="footer">
+    &copy; 2025 Government Exam Hub. All Rights Reserved.
+</div>
+<!-- 🔹 Contact Section -->
+<div id="contact" style="text-align: center;">
+    <h2>Contact Us</h2>
+    <p>Email: support@govexamhub.com</p>
+    <p>Phone: +91-9876543210</p>
+</div>
+</div>
+</body>
+</html>
